@@ -2,9 +2,9 @@ best <- function(state, outcome) {
         data <- read.csv("outcome-of-care-measures.csv", na.strings = "Not Available", stringsAsFactors = FALSE)
         outcome_name <- c("heart attack", "heart failure", "pneumonia")
         outcome_index <- c("heart attack" = 11, "heart failure" = 17, "pneumonia" = 23)
-                
+          
+        state_valid <- state%in%data$State      
         # state_valid <- state%in%as.character(data$State)
-        state_valid <- state%in%data$State
         outcome_valid <- outcome%in%outcome_name
         if(!state_valid) stop("invalid state")
         if(!outcome_valid) stop("invalid outcome")
